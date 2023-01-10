@@ -30,11 +30,13 @@ function Banner() {
   return (
     <header className='banner' style={{
         backgroundSize:"cover",
-        backgroundImage: `url("https://images.squarespace-cdn.com/content/v1/603c2033a6de590d5d368ccc/1619440243882-HEURADB1VBT15DHA2GUX/GWD+RISING+-+BLACK+BACKGROUND.png?format=2500w")`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
         backgroundPosition:"center center"
     }}>
         <div className='banner__contents'>
-            <h1 className='banner__title'>Movie Name</h1>
+            <h1 className='banner__title'>
+                {movie?.title || movie?.name || movie?.orignal_name}
+            </h1>
             <div className='banner__buttons'>
                 <button className='banner__button'>Play</button>
                 <button className='banner__button'>My List</button>
@@ -42,9 +44,10 @@ function Banner() {
             <h1 className='banner__description'>
                 {/* Calling the truncate function to add '...' to any 
                 string over 150 characters */}
-                {truncate('This is a test description', 150)}
+                {truncate(movie?.overview, 150)}
             </h1>
         </div>
+        {/* The sweet fade at the bottom of the banner photo */}
         <div className='banner--fadeBottom'/>
     </header>
   )
